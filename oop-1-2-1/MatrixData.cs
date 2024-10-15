@@ -41,5 +41,6 @@ public partial class MyMatrix
         for (int j = 0; j < Width; j++)
             data[i, j] = parsedRows[i][j];
     }
-    
+    public int getHeight() => Height;
+    public int getWidth() => Width;
 }
