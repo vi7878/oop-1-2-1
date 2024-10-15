@@ -33,7 +33,22 @@ class Program
             }
         }
     }
+    static MyMatrix InputMatrix(string matrixName)
+    {
+        Console.WriteLine($"Введіть розміри матриці {matrixName} (Записати у вигляді:рядки стовпці):");
+        string[] dimensions = Console.ReadLine().Split();
+        int rows = int.Parse(dimensions[0]);
+        int cols = int.Parse(dimensions[1]);
 
+        Console.WriteLine($"Введіть елементи матриці {matrixName} (по одному рядку, числа розділені пробілами):");
+        string[] matrixRows = new string[rows];
+        for (int i = 0; i < rows; i++)
+        {
+            matrixRows[i] = Console.ReadLine();
+        }
+
+        return new MyMatrix(matrixRows);
+    }
     
 }
 
