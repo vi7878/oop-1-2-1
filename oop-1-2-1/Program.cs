@@ -23,6 +23,7 @@ class Program
                     PerformAddition();
                     break;
                 case 2:
+                    PerformMultiplication();
                     break;
                 case 3:
                     break;
@@ -64,6 +65,24 @@ class Program
         }
         catch (Exception ex)
         {
+            Console.WriteLine($"Помилка: {ex.Message}");
+        }
+    }
+    static void PerformMultiplication()
+    {
+        try
+        {
+            MyMatrix matrix1 = InputMatrix("A");
+            MyMatrix matrix2 = InputMatrix("B");
+
+            MyMatrix result = matrix1 * matrix2;
+
+            Console.WriteLine("\nРезультат множення:");
+            Console.WriteLine(result.ToString());
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Помилка: {ex.Message}");
         }
     }
 }
