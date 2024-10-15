@@ -43,4 +43,9 @@ public partial class MyMatrix
     }
     public int getHeight() => Height;
     public int getWidth() => Width;
+    public double this[int i, int j]
+    {
+        get => data[i, j];
+        set => data[i, j] = value;
+    }
 }
