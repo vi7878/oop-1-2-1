@@ -24,6 +24,7 @@ class Program
                     PerformMultiplication();
                     break;
                 case 3:
+                    PerformTransposition();
                     break;
                 case 4:
                     return;
