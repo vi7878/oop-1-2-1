@@ -12,6 +12,13 @@ public partial class MyMatrix
         data = new double[Height, Width];
         Array.Copy(other.data, data, other.data.Length);
     }
+    public MyMatrix(double[,] array)
+    {
+        Height = array.GetLength(0);
+        Width = array.GetLength(1);
+        data = new double[Height, Width];
+        Array.Copy(array, data, array.Length);
+    }
     public MyMatrix(double[][] jaggedArray)
     {
         if (!jaggedArray.All(row => row.Length == jaggedArray[0].Length))
@@ -22,15 +29,15 @@ public partial class MyMatrix
         data = new double[Height, Width];
 
         for (int i = 0; i < Height; i++)
-        for (int j = 0; j < Width; j++)
-            data[i, j] = jaggedArray[i][j];
+            for (int j = 0; j < Width; j++)
+                data[i, j] = jaggedArray[i][j];
     }
     public MyMatrix(string[] rows)
     {
         var parsedRows = rows.Select(row => 
             row.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
-                .Select(double.Parse)
-                .ToArray()
+               .Select(double.Parse)
+               .ToArray()
         ).ToArray();
         if (!parsedRows.All(row => row.Length == parsedRows[0].Length))
             throw new ArgumentException("Масив рядків не представляє прямокутну матрицю");
@@ -38,8 +45,28 @@ public partial class MyMatrix
         Width = parsedRows[0].Length;
         data = new double[Height, Width];
         for (int i = 0; i < Height; i++)
-        for (int j = 0; j < Width; j++)
-            data[i, j] = parsedRows[i][j];
+            for (int j = 0; j < Width; j++)
+                data[i, j] = parsedRows[i][j];
+    }
+    public MyMatrix(string matrixString)
+    {
+        var rows = matrixString.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+        var parsedRows = rows.Select(row =>
+            row.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries)
+               .Select(double.Parse)
+               .ToArray()
+        ).ToArray();
+
+        if (!parsedRows.All(row => row.Length == parsedRows[0].Length))
+            throw new ArgumentException("Рядок не представляє прямокутну матрицю");
+
+        Height = parsedRows.Length;
+        Width = parsedRows[0].Length;
+        data = new double[Height, Width];
+
+        for (int i = 0; i < Height; i++)
+            for (int j = 0; j < Width; j++)
+                data[i, j] = parsedRows[i][j];
     }
     public int getHeight() => Height;
     public int getWidth() => Width;
