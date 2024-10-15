@@ -49,4 +49,19 @@ public partial class MyMatrix
         set => data[i, j] = value;
     }
     public double GetElement(int i, int j) => data[i, j];
+    public void SetElement(int i, int j, double value) => data[i, j] = value;
+    public override string ToString()
+    {
+        string[] rows = new string[Height];
+        for (int i = 0; i < Height; i++)
+        {
+            string[] rowElements = new string[Width];
+            for (int j = 0; j < Width; j++)
+            {
+                rowElements[j] = data[i, j].ToString();
+            }
+            rows[i] = string.Join("\t", rowElements);
+        }
+        return string.Join("\n", rows);
+    }
 }
