@@ -27,4 +27,16 @@ public partial class MyMatrix
 
         return new MyMatrix(result);
     }
+    protected double[,] GetTransponedArray()
+    {
+        double[,] transposed = new double[Width, Height];
+        for (int i = 0; i < Height; i++)
+        for (int j = 0; j < Width; j++)
+            transposed[j, i] = data[i, j];
+        return transposed;
+    }
+    public MyMatrix GetTransponedCopy()
+    {
+        return new MyMatrix(GetTransponedArray());
+    }
 }
