@@ -77,7 +77,7 @@ public partial class MyMatrix
     }
     public double GetElement(int i, int j) => data[i, j];
     public void SetElement(int i, int j, double value) => data[i, j] = value;
-    public override string ToString()
+    override public string ToString()
     {
         string[] rows = new string[Height];
         for (int i = 0; i < Height; i++)
