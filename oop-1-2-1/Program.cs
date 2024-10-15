@@ -20,6 +20,7 @@ class Program
             switch (choice)
             {
                 case 1:
+                    PerformAddition();
                     break;
                 case 2:
                     break;
@@ -49,6 +50,21 @@ class Program
 
         return new MyMatrix(matrixRows);
     }
-    
+    static void PerformAddition()
+    {
+        try
+        {
+            MyMatrix matrix1 = InputMatrix("A");
+            MyMatrix matrix2 = InputMatrix("B");
+
+            MyMatrix result = matrix1 + matrix2;
+
+            Console.WriteLine("\nРезультат додавання:");
+            Console.WriteLine(result.ToString());
+        }
+        catch (Exception ex)
+        {
+        }
+    }
 }
 
