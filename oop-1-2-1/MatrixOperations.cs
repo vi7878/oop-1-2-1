@@ -39,4 +39,16 @@ public partial class MyMatrix
     {
         return new MyMatrix(GetTransponedArray());
     }
+    public void TransponeMe()
+    {
+        var transposed = GetTransponedArray();
+        var tempHeight = Height;
+        var tempWidth = Width;
+        var field = typeof(MyMatrix).GetField("data", 
+            System.Reflection.BindingFlags.Instance | 
+            System.Reflection.BindingFlags.NonPublic);
+        field.SetValue(this, transposed);
+        typeof(MyMatrix).GetProperty("Height").SetValue(this, tempWidth);
+        typeof(MyMatrix).GetProperty("Width").SetValue(this, tempHeight);
+    }
 }
