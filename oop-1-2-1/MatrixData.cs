@@ -48,4 +48,5 @@ public partial class MyMatrix
         get => data[i, j];
         set => data[i, j] = value;
     }
+    public double GetElement(int i, int j) => data[i, j];
 }
